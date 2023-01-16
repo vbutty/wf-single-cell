@@ -235,7 +235,7 @@ process stringtie {
     """
     # Build transcriptome. 
     samtools view -h align.bam  \
-        | tee >(stringtie -L  -p ${task.cpus} -G chr.gtf -l stringtie \
+        | tee >(stringtie -L  -p ${task.cpus} -G chr.gtf -l stringtie -j 2 \
             -o stringtie.gff - ) \
         | samtools fastq - \
         | tee reads.fastq \
